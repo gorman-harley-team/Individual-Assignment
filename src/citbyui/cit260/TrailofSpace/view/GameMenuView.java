@@ -13,28 +13,8 @@ import java.util.Scanner;
  */
 public class GameMenuView {
     
-    public String getInput(){
-        
-        Scanner keyboard = new Scanner(System.in);
-        boolean valid = false;
-        String selection = null;
-        
-        // while a valid name has not been retrieved
-        while(!valid){
-            
-            //get the value entered from the keyboard
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            
-            if(selection.length() < 1){ //blank value entered
-                System.out.println("\n*** Invalid selection *** Try again");
-                continue;
-            }
-            
-            break;
-        }
-        
-        return selection; 
+    private void doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public class GameMenu {
@@ -100,11 +80,60 @@ public class GameMenuView {
 
     private void help() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
-    
+    }   
 }
 
+        
+private final String GameMenu = "\n"
+            +"\n------------------------"
+            +"\n| Game Menu"
+            +"\n------------------------"
+            +"\nV - View map"
+            +"\nI - View list of items in inventory"
+            +"\nS - View ship status"
+            +"\nP - View player stats"
+            +"\nM - Move to new location"
+            +"\nX - Exit Ship"
+            +"\nE - Re-enter ship"
+            +"\nU - Upgrade ship"
+            +"\nH - Help"
+            +"\nQ - Exit the game"
+            +"\n------------------------";
+            
+    
+    public void display() {
+        String value;
+        
+        do{
+            System.out.println(this.GameMenu);
+            value = this.getInput();
+            this.doAction(value);
+        }
+        while (!value.equals("Q"));
+    }
+    
+    public String getInput(){
+        
+        Scanner keyboard = new Scanner(System.in);
+        boolean valid = false;
+        String selection = null;
+        
+        // while a valid name has not been retrieved
+        while(!valid){
+            
+            //get the value entered from the keyboard
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+            
+            if(selection.length() < 1){ //blank value entered
+                System.out.println("\n*** Invalid selection *** Try again");
+                continue;
+            }
+            
+            break;
+        }
+        
+        return selection;
+    }
     
 }

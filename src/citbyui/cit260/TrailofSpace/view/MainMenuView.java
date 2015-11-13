@@ -13,41 +13,24 @@ import java.util.Scanner;
  */
 public class MainMenuView {
 
-    public String getInput(){
-        
-        Scanner keyboard = new Scanner(System.in);
-        boolean valid = false;
-        String selection = null;
-        
-        // while a valid name has not been retrieved
-        while(!valid){
-            
-            //get the value entered from the keyboard
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            
-            if(selection.length() < 1){ //blank value entered
-                System.out.println("\n*** Invalid selection *** Try again");
-                continue;
-            }
-            
-            break;
-        }
-        
-        return selection;
+    private void doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public class mainMenu{
     
         public void doAction(char choice){
             switch (choice){
-                case 'S': // view map
+                case 'S': // Start new game
                     this.newGame();
                     break;
-                case 'L':// view list of items in inventory
+                case 'L':// Load Game
                     this.loadGame();
                     break;
-                case 'H': // view ship status
+                case 'H': // Help, how to play the game
+                    this.help();
+                    break;
+                case 'E': // Exit the game
                     this.help();
                     break;
                 default:
@@ -70,8 +53,50 @@ public class MainMenuView {
     
     }
     
-    void displayMenu() {
-        System.out.println("Displaying the menu");
+    private final String menu = "\n"
+            +"\n------------------------"
+            +"\n| Main Menu"
+            +"\n------------------------"
+            +"\nS - Start new game"
+            +"\nL - Load game"
+            +"\nH - Help, how to play the game"
+            +"\nE - Exit the game"
+            +"\n------------------------";
+            
+    
+    public void display() {
+        String value;
+        
+        do{
+            System.out.println(this.menu);
+            value = this.getInput();
+            this.doAction(value);
+        }
+        while (!value.equals("Q"));
+    }
+    
+    public String getInput(){
+        
+        Scanner keyboard = new Scanner(System.in);
+        boolean valid = false;
+        String selection = null;
+        
+        // while a valid name has not been retrieved
+        while(!valid){
+            
+            //get the value entered from the keyboard
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+            
+            if(selection.length() < 1){ //blank value entered
+                System.out.println("\n*** Invalid selection *** Try again");
+                continue;
+            }
+            
+            break;
+        }
+        
+        return selection;
     }
     
 }

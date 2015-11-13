@@ -12,32 +12,12 @@ import java.util.Scanner;
  * @author Travis Harley
  */
 public class BattleMenuView {
-    
-    public String getInput(){
-        
-        Scanner keyboard = new Scanner(System.in);
-        boolean valid = false;
-        String selection = null;
-        
-        // while a valid name has not been retrieved
-        while(!valid){
-            
-            //get the value entered from the keyboard
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            
-            if(selection.length() < 1){ //blank value entered
-                System.out.println("\n*** Invalid selection *** Try again");
-                continue;
-            }
-            
-            break;
-        }
-        
-        return selection; 
+
+    private void doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-        public class BattleMenu{
+           public class BattleMenu{
             
             public void doAction(char choice){
                 switch (choice){
@@ -72,4 +52,50 @@ public class BattleMenuView {
             
         }
     
+           
+           private final String BattleMenu = "\n"
+            +"\n------------------------"
+            +"\n| Battle Menu"
+            +"\n------------------------"
+            +"\nA - Attack"
+            +"\nD - Defend"
+            +"\nP - Predict outcome"
+            +"\nQ - Exit the game"
+            +"\n------------------------";
+            
+    
+    public void display() {
+        String value;
+        
+        do{
+            System.out.println(this.BattleMenu);
+            value = this.getInput();
+            this.doAction(value);
+        }
+        while (!value.equals("Q"));
+    }
+    
+    public String getInput(){
+        
+        Scanner keyboard = new Scanner(System.in);
+        boolean valid = false;
+        String selection = null;
+        
+        // while a valid name has not been retrieved
+        while(!valid){
+            
+            //get the value entered from the keyboard
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+            
+            if(selection.length() < 1){ //blank value entered
+                System.out.println("\n*** Invalid selection *** Try again");
+                continue;
+            }
+            
+            break;
+        }
+        
+        return selection;
+    }
 }
